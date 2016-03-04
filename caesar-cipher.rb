@@ -1,7 +1,7 @@
-#need to fix letters destined to be 'z'
+#Alphabetically shifts the letters in a string by a specified amount
 def caesar(string, num)
 
-	arr = string.split(" ")
+	arr = string.downcase.split(" ")
 	result = []
 
 	i = 0
@@ -14,7 +14,7 @@ def caesar(string, num)
 		word_idx = 0
 		while word_idx < word_num.length
 
-			if (word_num[word_idx] + num < "z".ord)
+			if (word_num[word_idx] + num <= "z".ord)
 				new_chars += (word_num[word_idx] + num).chr
 			else 
 				new_chars += ((word_num[word_idx] + num) - ("z".ord) + ("a".ord - 1)).chr
@@ -36,5 +36,5 @@ end
 
 caesar("hello", 3) # => "khoor"
 caesar("hello world", 3)
-caesar("zeus exits the arena", 3)
-caesar("athena enters the arena", 12)
+caesar("Zeus exits the arena", 3)
+caesar("Athena enters the arena", 12)
