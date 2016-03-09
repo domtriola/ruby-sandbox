@@ -31,10 +31,33 @@ def wizards_trial()
 
 end
 
-wizards_trial()
+#wizards_trial()
 
 
+#Compare gnome guesses to the actual hat placements - takes in two hashes as parameters
+def judge_the_gnomes(guesses, placements)
 
+	live_gnomes = []
+	dead_gnomes = []
+
+	guesses.each do |key, value|
+		if value == placements[key]
+			live_gnomes << key
+		else
+			dead_gnomes << key
+		end
+	end
+
+	print "Live gnomes: " 
+	p live_gnomes
+	print "Dead gnomes: "
+	p dead_gnomes
+
+end
+
+#judge_the_gnomes({"one"=>"red", "two"=>"white"}, {"one"=>"red", "two"=>"white"})
+#judge_the_gnomes({"one"=>"red", "two"=>"white"}, {"one"=>"white", "two"=>"red"})
+#judge_the_gnomes({"one"=>"red", "two"=>"white"}, {"one"=>"red", "two"=>"red"})
 
 
 
