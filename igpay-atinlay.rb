@@ -2,29 +2,24 @@
 ## (need to create a way to discern the first letter group to move)
 
 def igpay_atinlay(sentence)
+	
+	arr = sentence.downcase.split(" ")
+	result = []
 
-	sentence_lower = sentence.downcase
-	arr = sentence_lower.split(" ")
-	result_arr = []
+	arr.each do |item|
 
-	i = 0
-	while i < arr.count
-
-		if (arr[i][0] == "a") || (arr[i][0] == "e") || (arr[i][0] == "i") || (arr[i][0] == "o") || (arr[i][0] == "u")
-			atinlay_word = arr[i] + "way"
+		if (item[0] == "a") || (item[0] == "e") || (item[0] == "i") || (item[0] == "o") || (item[0] == "u")
+			atinlay_word = item + "way"
 		else
-			first_letter = arr[i].slice!(0)
-			atinlay_word = arr[i] + first_letter + "ay"
+			first_letter = item.slice!(0)
+			atinlay_word = item + first_letter + "ay"
 		end
 			
-		result_arr << atinlay_word
-
-		i+=1
+		result << atinlay_word
 	end
 
-	result = result_arr.join(" ")
+	result = result.join(" ")
 	p result
-
 end
 
 igpay_atinlay("This sentence has been converted into Pig Latin")
