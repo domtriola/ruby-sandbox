@@ -62,9 +62,51 @@ end
 
 
 #Have the gnomes assign guesses to themselves, following the constraints of the puzzle
+#placements will be the hash "hatted_gnomes" from wizards_trial
 def gnome_guesses(placements)
 
+	guesses = {}
 
+	white_hats_ahead = 0
+
+	#count white hats ahead of gnome "one"
+	placements.each do |gnome, hat|
+		unless gnome == "one"
+			white_hats_ahead += 1 if hat == "white"
+		end
+	end
+
+	#set a starting total to compare to
+	white_hats_total = white_hats_ahead
+
+	#the first gnome will say "white" if he/she sees an even number of white hats
+	#or "red" for an odd number of white hats
+	if white_hats_ahead % 2 == 0
+		guesses["one"] = "white"
+	else
+		guesses["one"] = "red"
+	end
+
+	#the rest of the gnomes will guess according to what they see
+	#and know their own hat to be
+	placements.each do |gnome, hat|
+		
+
+		if gnome == "one"
+			#set prev gnome guess to guesses["one"]
+			prev_guess = guesses[gnome]
+		else
+			#remove the current gnome's hat from the white hat count if it is white
+			white_hats_ahead -= 1 if hat == "white"
+
+			#have gnome evaluate if he is white or red
+			
+
+			prev_guess = guesses[gnome]
+		end
+	end
+
+	
 
 end
 
