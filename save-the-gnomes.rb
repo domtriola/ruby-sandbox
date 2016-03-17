@@ -6,8 +6,8 @@
 # all facing the same direction so that each gnome only sees the gnomes
 # in front of him or her. Then each gnome will have a red or white hat
 # placed on their head. Starting with the gnome in back each gnome will
-# get one chance to guess the color of his/her own hat. If they are right
-# they live. Otherwise they die.
+# get one chance to guess the color of his/her own hat. If that gnome is right
+# he/she lives. Otherwise he/she dies.
 #
 # The night before the execution the gnomes devise a plan to guarantee the
 # survival of at least 9 of themselves.
@@ -58,6 +58,23 @@ end
 #judge_the_gnomes({"one"=>"red", "two"=>"white"}, {"one"=>"red", "two"=>"white"})
 #judge_the_gnomes({"one"=>"red", "two"=>"white"}, {"one"=>"white", "two"=>"red"})
 #judge_the_gnomes({"one"=>"red", "two"=>"white"}, {"one"=>"red", "two"=>"red"})
+
+
+
+#Have the gnomes assign guesses to themselves, following the constraints of the puzzle
+def gnome_guesses(placements)
+
+
+
+end
+
+
+
+
+
+
+
+
 
 
 
