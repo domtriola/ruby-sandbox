@@ -12,7 +12,7 @@
 # The night before the execution the gnomes devise a plan to guarantee the
 # survival of at least 9 of themselves.
 #
-# What is there plan?
+# What is their plan?
 
 
 
@@ -100,7 +100,6 @@ def gnome_guesses(placements)
 	placements.each do |gnome, hat|
 		
 		unless gnome == "one"
-			
 			#remove the current gnome's hat from the white hat count if it is white
 			white_hats_ahead -= 1 if hat == "white"
 
@@ -113,12 +112,10 @@ def gnome_guesses(placements)
 				guesses[gnome] = "white"
 				white_hats_total -= 1
 			end
-		
 		end
 	end
 
 	guesses
-
 end
 
 
