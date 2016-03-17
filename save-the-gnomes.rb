@@ -28,10 +28,13 @@ def wizards_trial()
 		hatted_gnomes[gnome] = hats.sample
 	end
 
+	#Have gnomes guess what hat's they wear
+	guesses = gnome_guesses(hatted_gnomes)
+
+	#Judge the gnomes
+	judge_the_gnomes(guesses, hatted_gnomes)
 
 end
-
-#wizards_trial()
 
 
 #Compare gnome guesses to the actual hat placements - takes in two hashes as parameters
@@ -40,11 +43,11 @@ def judge_the_gnomes(guesses, placements)
 	live_gnomes = []
 	dead_gnomes = []
 
-	guesses.each do |key, value|
-		if value == placements[key]
-			live_gnomes << key
+	guesses.each do |gnome, hat|
+		if hat == placements[gnome]
+			live_gnomes << gnome
 		else
-			dead_gnomes << key
+			dead_gnomes << gnome
 		end
 	end
 
@@ -76,7 +79,9 @@ def gnome_guesses(placements)
 		end
 	end
 
-	#set a starting total to compare to
+	#set a starting total to compare to:
+	#each gnome will subtract 1 from this number in their head
+	#whenever a white hat is guessed
 	white_hats_total = white_hats_ahead
 
 	#the first gnome will say "white" if he/she sees an even number of white hats
@@ -86,34 +91,38 @@ def gnome_guesses(placements)
 	else
 		guesses["one"] = "red"
 	end
+	#this lets the gnomes compare what they see to the white_hats_total,
+	#because they know if they should see an odd or even number of white
+	#hats in front of them
 
 	#the rest of the gnomes will guess according to what they see
-	#and know their own hat to be
+	#and know their own hat to be based on the white_hats_total
 	placements.each do |gnome, hat|
 		
-
-		if gnome == "one"
-			#set prev gnome guess to guesses["one"]
-			prev_guess = guesses[gnome]
-		else
+		unless gnome == "one"
+			
 			#remove the current gnome's hat from the white hat count if it is white
 			white_hats_ahead -= 1 if hat == "white"
 
-			#have gnome evaluate if he is white or red
-			
-
-			prev_guess = guesses[gnome]
+			#have gnome evaluate whether he/she is white or red
+			#by comparing white_hats_ahead to what they know to be
+			#the actual number of white hats
+			if white_hats_ahead == white_hats_total
+				guesses[gnome] = "red"
+			else
+				guesses[gnome] = "white"
+				white_hats_total -= 1
+			end
+		
 		end
 	end
 
-	
+	guesses
 
 end
 
 
-
-
-
+wizards_trial()
 
 
 
