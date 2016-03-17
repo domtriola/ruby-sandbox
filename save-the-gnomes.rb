@@ -15,7 +15,6 @@
 # What is their plan?
 
 
-
 def wizards_trial()
 
 	#Initialize hats and gnomes
@@ -28,40 +27,13 @@ def wizards_trial()
 		hatted_gnomes[gnome] = hats.sample
 	end
 
-	#Have gnomes guess what hat's they wear
+	#Have gnomes guess which color hats they have on
 	guesses = gnome_guesses(hatted_gnomes)
 
 	#Judge the gnomes
 	judge_the_gnomes(guesses, hatted_gnomes)
 
 end
-
-
-#Compare gnome guesses to the actual hat placements - takes in two hashes as parameters
-def judge_the_gnomes(guesses, placements)
-
-	live_gnomes = []
-	dead_gnomes = []
-
-	guesses.each do |gnome, hat|
-		if hat == placements[gnome]
-			live_gnomes << gnome
-		else
-			dead_gnomes << gnome
-		end
-	end
-
-	print "Live gnomes: " 
-	p live_gnomes
-	print "Dead gnomes: "
-	p dead_gnomes
-
-end
-
-#judge_the_gnomes({"one"=>"red", "two"=>"white"}, {"one"=>"red", "two"=>"white"})
-#judge_the_gnomes({"one"=>"red", "two"=>"white"}, {"one"=>"white", "two"=>"red"})
-#judge_the_gnomes({"one"=>"red", "two"=>"white"}, {"one"=>"red", "two"=>"red"})
-
 
 
 #Have the gnomes assign guesses to themselves, following the constraints of the puzzle
@@ -116,6 +88,28 @@ def gnome_guesses(placements)
 	end
 
 	guesses
+end
+
+
+#Compare gnome guesses to the actual hat placements - takes in two hashes as parameters
+def judge_the_gnomes(guesses, placements)
+
+	live_gnomes = []
+	dead_gnomes = []
+
+	guesses.each do |gnome, hat|
+		if hat == placements[gnome]
+			live_gnomes << gnome
+		else
+			dead_gnomes << gnome
+		end
+	end
+
+	print "Live gnomes: " 
+	p live_gnomes
+	print "Dead gnomes: "
+	p dead_gnomes
+
 end
 
 
