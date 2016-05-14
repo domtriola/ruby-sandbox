@@ -4,45 +4,15 @@
 # of chess!
 
 def randChess()
-	#starting positions
-	pieces = {
-		rook1: 1,
-		knight1: 2,
-		bishop1: 3,
-		queen: 4,
-		king: 5,
-		bishop2: 6,
-		knight2: 7,
-		rook2: 8
-	}
-
-	#new positions
-	positions = [1, 2, 3, 4, 5, 6, 7, 8].shuffle
-
-	#assign new positions
-	i=0
-	pieces.each do |piece, position|
-		pieces[piece] = positions[i]
-		i+=1
-	end
-
-	if pieces[:bishop1] % 2 == 0
-		if pieces[:bishop2] % 2 == 1
-			return pieces
-		else
-			puts "rand1"
-			return randChess()
-		end
-	elsif pieces[:bishop2] % 2 == 0
-		return pieces
+	white = ["rook1", "knight1", "bishop1", "queen", "king", "bishop2", "knight2", "rook2"]
+	white = white.shuffle
+	if white.index("bishop1") % 2 == 0
+		return white if white.index("bishop2") % 2 != 0
+		return randChess()
 	else
-		puts "rand2"
+		return white if white.index("bishop2") % 2 != 1
 		return randChess()
 	end
 end
 
 p randChess()
-
-
-
-
