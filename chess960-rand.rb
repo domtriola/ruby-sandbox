@@ -6,18 +6,18 @@
 def randChess()
 	#starting positions
 	pieces = {
-		rook1: "a1",
-		knight1: "a2",
-		bishop1: "a3",
-		queen: "a4",
-		king: "a5",
-		bishop2: "a6",
-		knight2: "a7",
-		rook2: "a8"
+		rook1: 1,
+		knight1: 2,
+		bishop1: 3,
+		queen: 4,
+		king: 5,
+		bishop2: 6,
+		knight2: 7,
+		rook2: 8
 	}
 
 	#new positions
-	positions = ["a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8"].shuffle
+	positions = [1, 2, 3, 4, 5, 6, 7, 8].shuffle
 
 	#assign new positions
 	i=0
@@ -25,7 +25,24 @@ def randChess()
 		pieces[piece] = positions[i]
 		i+=1
 	end
-	pieces
+
+	if pieces[:bishop1] % 2 == 0
+		if pieces[:bishop2] % 2 == 1
+			return pieces
+		else
+			puts "rand1"
+			return randChess()
+		end
+	elsif pieces[:bishop2] % 2 == 0
+		return pieces
+	else
+		puts "rand2"
+		return randChess()
+	end
 end
 
 p randChess()
+
+
+
+
