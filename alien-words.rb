@@ -1,6 +1,6 @@
 # Outputs a string of words with randomly generated characters
-# lengthR: range of allowed lengths for each word
-# maxc: maximum number of consecutive consonants allowed in a word
+# length_r: range of allowed lengths for each word
+# max_c: maximum number of consecutive consonants allowed in a word
 # number: number of words
 
 def alien_words(length_r, max_c, number)
