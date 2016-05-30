@@ -1,23 +1,21 @@
-# Generates a random word
-# length: length of each word
+# Outputs a string of words with randomly generated characters
+# lengthR: range of allowed lengths for each word
+# maxc: maximum number of consecutive consonants allowed in a word
 # number: number of words
-# maxc: maximum number of consonants in a row
 
-def alien_words(length, number, maxc)
+def alien_words(length_r, max_c, number)
 	words = []
 	letters = ('a'..'z').to_a
 	vowels = %w[a e i o u]
 	until words.length == number
 		word = ""
-		until word.length == length
-			if word.length < maxc
-				#puts 'first letters'
+		word_length = length_r.to_a.sample
+		until word.length == word_length
+			if word.length < max_c
 				word += letters.sample
-			elsif /[aeiou]/.match(word[-maxc..-1])
-				#puts word[-maxc..-1] + ': not too many consonants'
+			elsif /[aeiou]/.match(word[-max_c..-1])
 				word += letters.sample
 			else
-				#puts word[-maxc..-1] + ': too many consonants'
 				word += vowels.sample
 			end
 		end
@@ -26,5 +24,5 @@ def alien_words(length, number, maxc)
 	words.join(" ")
 end
 
-p alien_words(5, 4, 2)
+p alien_words((3..6), 2, 5)
 
