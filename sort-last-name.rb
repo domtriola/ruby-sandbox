@@ -14,7 +14,7 @@ def sort_by_last_name(array)
       end
     end
   end
-  result
+  result.map {|pair| pair = pair.join(" ")}
 end
 
 p sort_by_last_name(["Arthur Dent", "Ford Prefect", "Zaphod Beeblebrox", "Sperm Whale", "Deep Thought"])
