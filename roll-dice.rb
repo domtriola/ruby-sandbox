@@ -1,10 +1,22 @@
 # A script to roll a die
 
 class Die
-	attr_accessor :sides
+	def initialize(sides)
+		@sides = sides
+
+		if defined?(@@dice)
+			@@dice << @sides
+		else
+			@@dice = [@sides]
+		end
+	end
+
+	def self.dice_created
+		@@dice.map { |die| "#{die.to_s}-sided" }
+	end
 
 	def roll
-		rand(self.sides) + 1
+		rand(@sides) + 1
 	end
 
 	def roll_times(n)
@@ -14,10 +26,10 @@ class Die
 	end
 end
 
-six_sided = Die.new
-six_sided.sides = 6
+six_sided = Die.new(6)
 six_sided.roll_times(2)
 
-twenty_sided = Die.new
-twenty_sided.sides = 20
+twenty_sided = Die.new(20)
 twenty_sided.roll_times(2)
+
+p Die.dice_created
