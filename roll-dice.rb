@@ -1,24 +1,23 @@
-# A function to roll any number of dice with any number of sides
-def roll_dice(rolls, sides)
+# A script to roll a die
 
-	result = 0
-	die = []
+class Die
+	attr_accessor :sides
 
-	i=0
-	while i < sides
-		die << i+1
-		i+=1
+	def roll
+		rand(self.sides) + 1
 	end
 
-	rolls.times do
-		result += die.sample
+	def roll_times(n)
+		rolls = []
+		n.times { rolls << self.roll }
+		puts "Rolls: #{rolls.join(', ')}\nTotal: #{rolls.inject(:+)}"
 	end
-
-	result
-
 end
 
-p roll_dice(1,6) # => rolls 1 six-sided die
-p roll_dice(2,6) # => rolls 2 six-sided dice
-p roll_dice(1,2) # => rolls 1 two-sided die (like flipping a coin)
-p roll_dice(1,20) # => rolls 1 twenty-sided die
+six_sided = Die.new
+six_sided.sides = 6
+six_sided.roll_times(2)
+
+twenty_sided = Die.new
+twenty_sided.sides = 20
+twenty_sided.roll_times(2)
