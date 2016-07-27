@@ -8,7 +8,7 @@ def igpay_atinlay(string)
     else
       chars_to_move = ""
       vowel_found = false
-      until vowel_found
+      until vowel_found || word == ""
         if !vowels.include?(word[0])
           chars_to_move += word[0]
           word[0] = ""
@@ -28,3 +28,4 @@ end
 p igpay_atinlay("This sentence has been converted into Pig Latin")
 p igpay_atinlay("I am sleepy")
 p igpay_atinlay("Goodnight")
+p igpay_atinlay("tst")
