@@ -43,3 +43,9 @@ class Fixnum
       words
     end
 end
+
+p 4_578_429_760_169_836_423.in_words
+# =>
+# "four quintillion five hundred seventy eight quadrillion four hundred twenty
+# nine trillion seven hundred sixty billion one hundred sixty nine million eight
+# hundred thirty six thousand four hundred twenty three"
