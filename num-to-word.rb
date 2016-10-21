@@ -23,21 +23,18 @@ class Fixnum
     def number_words
       words = {}
 
-      ones =   %w{zero one two three four five six seven eight nine}
-      tens =   %w{ten twenty thirty forty fifty
-                  sixty seventy eighty ninety hundred}
-      teens =  %w{eleven twelve thirteen fourteen fifteen
-                  sixteen seventeen eighteen nineteen}
-      powers = %w{thousand million billion trillion quadrillion
-                  quintillion}
+      ones =   %w{zero one two three four five six seven eight nine ten eleven
+                  twelve thirteen fourteen fifteen sixteen seventeen eighteen
+                  nineteen}
+      tens =   %w{twenty thirty forty fifty sixty seventy eighty ninety hundred}
+      powers = %w{thousand million billion trillion quadrillion quintillion}
 
       def assign_object!(object, array, &prc)
         array.each_with_index { |word, index| object[prc.call(index)] = word }
       end
 
       assign_object!(words, ones) { |index| index }
-      assign_object!(words, tens) { |index| (index + 1) * 10 }
-      assign_object!(words, teens) { |index| index + 11 }
+      assign_object!(words, tens) { |index| (index + 2) * 10 }
       assign_object!(words, powers) { |index|  10 ** ((index + 1) * 3) }
 
       words
